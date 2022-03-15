@@ -1,3 +1,4 @@
+import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
 
 interface Props {
@@ -7,9 +8,6 @@ interface Props {
 
 const Root = styled('form')(({ theme }) => ({
     display: 'inline-flex',
-    flexDirection: 'column',
-    gap: theme.spacing(2),
-    marginTop: theme.spacing(),
 }));
 
 export const Form: React.FC<Props> = (props) => {
@@ -19,7 +17,9 @@ export const Form: React.FC<Props> = (props) => {
             autoComplete="off"
             onSubmit={(e) => { e.preventDefault(); props.onSubmit(); }}
         >
-            {props.children}
+            <Stack spacing={2} sx={{mt: 1}}>
+                {props.children}
+            </Stack>
         </Root>
     );
 };

@@ -1,6 +1,5 @@
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { styled } from '@mui/material/styles';
 import { Page } from 'src/components/Page';
 import TextField from '@mui/material/TextField';
 import { Form } from 'src/components/Form';
@@ -8,17 +7,12 @@ import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 import { useState } from 'react';
 import Grow from '@mui/material/Grow';
+import Stack from '@mui/material/Stack';
 
 interface Props {
     onJoin: (name: string, code: string) => Promise<boolean>;
     onHost: (name: string) => Promise<void>;
 }
-
-const Buttons = styled('div')(({ theme }) => ({
-    display: 'flex',
-    justifyContent: 'center',
-    gap: theme.spacing(),
-}));
 
 export const LandingPage: React.FC<Props> = (props) => {
     const [joinOrHost, setJoinOrHost] = useState('join');
@@ -105,7 +99,11 @@ export const LandingPage: React.FC<Props> = (props) => {
                     />
                 </Grow>
 
-                <Buttons>
+                <Stack
+                    direction="row"
+                    justifyContent="center"
+                    spacing={1}
+                >
                     <Button
                         variant="contained"
                         type="submit"
@@ -113,7 +111,7 @@ export const LandingPage: React.FC<Props> = (props) => {
                     >
                         {joinOrHost} game
                     </Button>
-                </Buttons>
+                </Stack>
             </Form>
         </Page>
     );
