@@ -25,23 +25,26 @@ export const WordEntryPage: React.FC<Props> = (props) => {
     const [readOnly, setReadOnly] = useState(false);
     const [animateIn, setAnimateIn] = useState(true);
     const [doneAll, setDoneAll] = useState(false);
+    const [error, setError] = useState(false);
 
     const progressFraction = 100 * (props.current - 1) / (props.total - 1);
 
     const lastWord = props.current >= props.total;
 
     const handleSubmit = async () => {
+        setError(false);
         setReadOnly(true);
         let finishing = false;
 
         const success = await props.onEnter(word);
+        
         if (success) {
             setWord('');
             setDoneAll(lastWord);
             finishing = lastWord;
         }
         else {
-            // TODO: indicate error, somehow
+            setError(true);
         }
 
         setAnimateIn(false);
@@ -71,8 +74,9 @@ export const WordEntryPage: React.FC<Props> = (props) => {
                         variant="outlined"
                         label={props.prompt}
                         value={word}
-                        onChange={e => setWord(e.target.value)}
+                        onChange={e => { setWord(e.target.value); setError(false); }}
                         focused={true}
+                        error={error}
                         disabled={readOnly || doneAll}
                     />
                 </Slide>
@@ -80,6 +84,7 @@ export const WordEntryPage: React.FC<Props> = (props) => {
                 <LinearProgress
                     variant="determinate"
                     value={progressFraction}
+                    aria-label="word entry progress"
                 />
 
                 <Stack

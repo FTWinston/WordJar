@@ -20,7 +20,7 @@ const Template: Story<ComponentProps<typeof WordEntryPage>> = (args) => {
         
         await new Promise(r => setTimeout(r, 200));
 
-        return true; // success
+        return Math.random() < 0.75; // Don't always succeed, sometimes fail.
     }
 
     return (
