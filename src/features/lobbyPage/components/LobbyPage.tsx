@@ -3,6 +3,10 @@ import Stack from '@mui/material/Stack';
 import Tooltip from '@mui/material/Tooltip';
 import Typography from '@mui/material/Typography';
 import { Page } from 'src/components/Page';
+import { RulesButton } from 'src/components/RulesButton';
+import SwitchIcon from '@mui/icons-material/SwapHoriz';
+import StartIcon from '@mui/icons-material/PlayArrow';
+import RuleIcon from '@mui/icons-material/Rule';
 import { Teams } from './Teams';
 
 interface Props {
@@ -11,6 +15,7 @@ interface Props {
     hostPlayer: string;
     team1: string[];
     team2: string[];
+    rules: string[];
     onConfigure?: () => void;
     onStart?: () => void;
     onSwitch: () => void;
@@ -20,6 +25,23 @@ export const LobbyPage: React.FC<Props> = (props) => {
     const message = props.onStart
         ? <>Choose your team, and start the game once all players have joined.</>
         : <>Choose your team, and wait for <strong>{props.hostPlayer}</strong> to configure the game.</>
+
+    const configureButton = props.onStart
+        ? (
+            <Button
+                variant="outlined"
+                color="primary"
+                onClick={props.onConfigure}
+                startIcon={<RuleIcon />}
+            >
+                Configure
+            </Button>
+        )
+        : undefined;
+
+    const rulesButton = props.onStart
+        ? undefined
+        : <RulesButton rules={props.rules} />
 
     return (
         <Page>
@@ -34,22 +56,17 @@ export const LobbyPage: React.FC<Props> = (props) => {
                 hostPlayer={props.hostPlayer}
             />
 
-            <Stack direction="row" spacing={1} justifyContent="center">
+            <Stack direction="row" spacing={1} justifyContent="center" alignItems="center">
                 <Button
                     variant="outlined"
                     color="primary"
                     onClick={props.onSwitch}
+                    startIcon={<SwitchIcon />}
                 >
                     Switch team
                 </Button>
 
-                <Button
-                    variant={props.onStart ? 'outlined' : 'text'}
-                    color="primary"
-                    onClick={props.onConfigure}
-                >
-                    Configure
-                </Button>
+                {configureButton}
 
                 <Tooltip title={`Only ${props.onStart ? 'you' : props.hostPlayer} can start the game.`}>
                     <span>
@@ -58,11 +75,14 @@ export const LobbyPage: React.FC<Props> = (props) => {
                             color="primary"
                             onClick={props.onStart}
                             disabled={props.onStart ? props.team1.length < 1 || props.team2.length < 2 : true}
+                            endIcon={<StartIcon />}
                         >
                             Start
                         </Button>
                     </span>
                 </Tooltip>
+                
+                {rulesButton}
             </Stack>
         </Page>
     );

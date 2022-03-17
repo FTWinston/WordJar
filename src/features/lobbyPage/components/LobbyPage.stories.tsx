@@ -38,6 +38,11 @@ const Template: Story<{ localHost: boolean }> = (args) => {
             onSwitch={onSwitch}
             onConfigure={args.localHost ? action('configure') : undefined}
             onStart={args.localHost ? action('start') : undefined}
+            rules={[
+                'This is a set of three rules.',
+                'Each of them is equally important.',
+                'But we don\'t want to use up too much space, either.'
+            ]}
         />
     );
 }

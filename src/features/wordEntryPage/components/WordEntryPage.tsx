@@ -1,18 +1,21 @@
 import Button from '@mui/material/Button';
-import Grow from '@mui/material/Grow';
 import LinearProgress from '@mui/material/LinearProgress';
 import Slide from '@mui/material/Slide';
 import Stack from '@mui/material/Stack';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
 import { useEffect, useRef, useState } from 'react';
+import AddIcon from '@mui/icons-material/Add';
 import { Form } from 'src/components/Form';
 import { Page } from 'src/components/Page';
+import { RulesButton } from 'src/components/RulesButton';
+
 
 interface Props {
     current: number;
     total: number;
     prompt: string;
+    rules: string[];
     onEnter: (word: string) => Promise<boolean>;
 }
 
@@ -82,15 +85,19 @@ export const WordEntryPage: React.FC<Props> = (props) => {
                 <Stack
                     direction="row"
                     justifyContent="center"
+                    alignItems="center"
                     spacing={1}
                 >
                     <Button
                         variant="contained"
                         type="submit"
                         disabled={readOnly || doneAll || word.trim().length === 0}
+                        startIcon={<AddIcon />}
                     >
                         add word
                     </Button>
+
+                    <RulesButton rules={props.rules} />
                 </Stack>
             </Form>
         </Page>
