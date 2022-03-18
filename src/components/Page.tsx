@@ -1,3 +1,4 @@
+import Container from '@mui/material/Container';
 import { styled } from '@mui/material/styles';
 
 interface Props {
@@ -7,13 +8,9 @@ interface Props {
 const Outer = styled('div')(({ theme }) => ({
     display: 'flex',
     justifyContent: 'center',
-    backgroundColor: theme.palette.grey[500],
 }));
 
-const Inner = styled('div')(({ theme }) => ({
-    // maxWidth: 'calc(100vh * 2 / 3)',
-    width: '100vw',
-    height: '100vh',
+const Inner = styled(Container)(({ theme }) => ({
     backgroundColor: theme.palette.background.default,
     position: 'relative',
     overflow: 'hidden',

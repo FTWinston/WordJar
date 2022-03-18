@@ -3,6 +3,7 @@ import { styled } from '@mui/material/styles';
 
 interface Props {
     className?: string;
+    width?: number | string;
     onSubmit: (submitter?: string) => void;
 }
 
@@ -17,7 +18,7 @@ export const Form: React.FC<Props> = (props) => {
             autoComplete="off"
             onSubmit={(e) => { e.preventDefault(); props.onSubmit(); }}
         >
-            <Stack spacing={2} sx={{mt: 1}}>
+            <Stack spacing={2} sx={{pt: 1, pb: 1, minWidth: props.width}}>
                 {props.children}
             </Stack>
         </Root>
