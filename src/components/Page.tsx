@@ -15,6 +15,7 @@ const Inner = styled(Container)(({ theme }) => ({
     position: 'relative',
     overflow: 'hidden',
     textAlign: 'center',
+    paddingBottom: theme.spacing(2),
 }));
 
 export const Page: React.FC<Props> = (props) => {
