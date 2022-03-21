@@ -37,7 +37,7 @@ export const WordEntryPage: React.FC<Props> = (props) => {
         let finishing = false;
 
         const success = await props.onEnter(word);
-        
+
         if (success) {
             setWord('');
             setDoneAll(lastWord);
@@ -64,7 +64,7 @@ export const WordEntryPage: React.FC<Props> = (props) => {
 
     return (
         <Page>
-            <Typography variant="h3">{doneAll ? 'Wait for others' : 'Enter a Word'}</Typography>
+            <Typography variant="h3" component="h1">{doneAll ? 'Wait for others' : 'Enter a Word'}</Typography>
 
             <Form onSubmit={handleSubmit}>
                 <Slide in={animateIn} appear={false} direction={animateIn ? 'right' : 'left'}>

@@ -45,7 +45,7 @@ export const LobbyPage: React.FC<Props> = (props) => {
 
     return (
         <Page>
-            <Typography variant="h2">Game Code: <strong>{props.code}</strong></Typography>
+            <Typography variant="h2" component="h1">Game Code: <strong>{props.code}</strong></Typography>
 
             <Typography variant="body2">{message}</Typography>
 

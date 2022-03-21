@@ -75,7 +75,7 @@ export const ConfigurationPage: React.FC<Props> = (props) => {
 
     return (
         <Page>            
-            <Typography variant="h2">Game Configuration</Typography>
+            <Typography variant="h2" component="h1">Game Configuration</Typography>
 
             <Typography variant="body1">As the host, you can configure the game's rules.</Typography>
 
