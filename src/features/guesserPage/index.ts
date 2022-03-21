@@ -1,0 +1,1 @@
+export { GuesserPage } from './components/GuesserPage';

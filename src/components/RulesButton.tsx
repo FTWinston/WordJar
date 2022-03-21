@@ -20,6 +20,7 @@ export const RulesButton: React.FC<Props> = (props) => {
                     color="secondary"
                     aria-label="Rules"
                     onClick={() => show(true)}
+                    sx={{ml: '16px !important'}}
                 >
                     <RuleIcon />
                 </Fab>
