@@ -1,10 +1,10 @@
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { useEffect, useState } from 'react';
 import { Page } from 'src/components/Page';
 import { RulesButton } from 'src/components/RulesButton';
 import { ProgressTimer } from 'src/components/ProgressTimer';
 import { GuessNotification } from 'src/components/GuessNotification';
+import { FoulNotification } from 'src/components/FoulNotification';
 
 interface Props {
     speaker: string;
@@ -12,17 +12,10 @@ interface Props {
     rules: string[];
     startTime: number;
     endTime: number;
+    calledFoul?: string;
 }
 
 export const GuesserPage: React.FC<Props> = (props) => {
-    const [showSnackbar, setShowSnackbar] = useState(false);
-    
-    useEffect(() => {
-        if (props.lastWord) {
-            setShowSnackbar(true);
-        }
-    }, [props.lastWord])
-
     return (
         <Page>
             <Typography variant="h3" component="h1">Listen to <strong>{props.speaker}</strong></Typography>
@@ -43,11 +36,9 @@ export const GuesserPage: React.FC<Props> = (props) => {
                 <RulesButton rules={props.rules} />
             </Stack>
             
-            <GuessNotification
-                word={props.lastWord}
-                show={showSnackbar }
-                hide={() => setShowSnackbar(false)}
-            />
+            <GuessNotification word={props.lastWord} show={true} />
+
+            <FoulNotification caller={props.calledFoul} />
         </Page>
     );
 };

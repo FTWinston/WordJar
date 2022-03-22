@@ -3,11 +3,11 @@ import Typography from '@mui/material/Typography';
 import BadIcon from '@mui/icons-material/Dangerous';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
-import { useEffect, useState } from 'react';
 import { Page } from 'src/components/Page';
 import { RulesButton } from 'src/components/RulesButton';
 import { ProgressTimer } from 'src/components/ProgressTimer';
 import { GuessNotification } from 'src/components/GuessNotification';
+import { FoulNotification } from 'src/components/FoulNotification';
 
 
 interface Props {
@@ -16,18 +16,11 @@ interface Props {
     rules: string[];
     startTime: number;
     endTime: number;
+    calledFoul?: string;
     onFoul: () => void;
 }
 
 export const ListenerPage: React.FC<Props> = (props) => {
-    const [showSnackbar, setShowSnackbar] = useState(false);
-    
-    useEffect(() => {
-        if (props.lastWord) {
-            setShowSnackbar(true);
-        }
-    }, [props.lastWord])
-
     return (
         <Page>
             <Typography variant="h3" component="h1">Listen to <strong>{props.speaker}</strong></Typography>
@@ -51,8 +44,9 @@ export const ListenerPage: React.FC<Props> = (props) => {
                         variant="contained"
                         type="button"
                         color="error"
-                        disabled={props.lastWord === undefined}
+                        disabled={props.calledFoul !== undefined || props.lastWord === undefined}
                         startIcon={<BadIcon />}
+                        onClick={props.onFoul}
                     >
                         Foul
                     </Button>
@@ -63,9 +57,10 @@ export const ListenerPage: React.FC<Props> = (props) => {
 
             <GuessNotification
                 word={props.lastWord}
-                show={showSnackbar }
-                hide={() => setShowSnackbar(false)}
+                show={props.calledFoul === undefined}
             />
+
+            <FoulNotification caller={props.calledFoul} />
         </Page>
     );
 };

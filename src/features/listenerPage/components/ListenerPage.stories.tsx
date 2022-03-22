@@ -1,22 +1,24 @@
 import { ListenerPage as ListenerPageComponent } from './ListenerPage';
 import { Story } from '@storybook/react'
 import { ComponentProps, useEffect, useState } from 'react';
-import { action } from '@storybook/addon-actions';
 
 export default {
     title: 'Listener Page',
     component: ListenerPageComponent,
 };
 
-const words = ['First word', '2nd', 'Yet another word to guess'];
+const words = ['First word', '2nd', undefined, 'Yet another word to guess'];
 
 const Template: Story<ComponentProps<typeof ListenerPageComponent>> = (args) => {
     const [wordIndex, setWordIndex] = useState(-1);
+
+    const [calledFoul, setCalledFoul] = useState<string>();
 
     useEffect(
         () => {
             const interval = setInterval(() => {
                 setWordIndex(value => value >= words.length - 1 ? 0 : value + 1);
+                setCalledFoul(undefined);
             }, 8000);
 
             return () => clearInterval(interval);
@@ -27,7 +29,8 @@ const Template: Story<ComponentProps<typeof ListenerPageComponent>> = (args) => 
         <ListenerPageComponent
             {...args}
             lastWord={words[wordIndex]}
-            onFoul={action('foul')}
+            calledFoul={calledFoul}
+            onFoul={() => setCalledFoul('Some guy')}
         />
     );
 }

@@ -9,6 +9,7 @@ import { Page } from 'src/components/Page';
 import { RulesButton } from 'src/components/RulesButton';
 import { ProgressTimer } from 'src/components/ProgressTimer';
 import Badge from '@mui/material/Badge';
+import { FoulNotification } from 'src/components/FoulNotification';
 
 
 interface Props {
@@ -17,6 +18,7 @@ interface Props {
     rules: string[];
     startTime: number;
     endTime: number;
+    calledFoul?: string;
     onSuccess: () => void;
     onSkip: () => void;
 }
@@ -85,6 +87,8 @@ export const SpeakerPage: React.FC<Props> = (props) => {
 
                 <RulesButton rules={props.rules} />
             </Stack>
+
+            <FoulNotification caller={props.calledFoul} />
         </Page>
     );
 };
