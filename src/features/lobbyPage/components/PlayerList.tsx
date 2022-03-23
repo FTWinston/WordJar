@@ -18,7 +18,7 @@ interface Props {
 
 export const PlayerList: React.FC<Props> = (props) => {
     return (
-        <Paper elevation={3} sx={{ width: 200, height: 230, overflow: 'auto' }}>
+        <Paper elevation={3} sx={{ width: 200, minHeight: 230, overflowY: 'auto', overflowX: 'hidden' }}>
             <List
                 dense
                 subheader={
