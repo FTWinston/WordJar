@@ -1,0 +1,1 @@
+export { NextSpeakerPage as SpeakerPage } from './components/NextSpeakerPage';

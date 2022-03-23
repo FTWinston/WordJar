@@ -2,8 +2,8 @@ import LinearProgress from '@mui/material/LinearProgress';
 import { useEffect, useState } from 'react';
 
 interface Props {
-    startTime: number;
-    endTime: number;
+    startTime?: number;
+    endTime?: number;
     'aria-label'?: string;
 }
 
@@ -18,7 +18,9 @@ export const ProgressTimer: React.FC<Props> = (props) => {
         []
     );
 
-    const progressFraction = Math.min(100, 100 * (currentTime - props.startTime) / (props.endTime - props.startTime));
+    const progressFraction = props.startTime !== undefined && props.endTime !== undefined
+        ? Math.min(100, 100 * (currentTime - props.startTime) / (props.endTime - props.startTime))
+        : 0;
 
     return (
         <LinearProgress

@@ -14,8 +14,8 @@ interface Props {
     speaker: string;
     lastWord?: string;
     rules: string[];
-    startTime: number;
-    endTime: number;
+    startTime?: number;
+    endTime?: number;
     calledFoul?: string;
     onFoul: () => void;
 }
