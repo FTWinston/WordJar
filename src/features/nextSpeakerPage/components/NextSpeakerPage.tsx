@@ -5,11 +5,12 @@ import DoneIcon from '@mui/icons-material/Done';
 import { Page } from 'src/components/Page';
 import { RulesButton } from 'src/components/RulesButton';
 import { ProgressTimer } from 'src/components/ProgressTimer';
+import { GameRules } from 'src/types/GameRules';
 
 
 interface Props {
     numSkips: number; // TODO: use this?
-    rules: string[];
+    rules: GameRules;
     onStart: () => void;
 }
 

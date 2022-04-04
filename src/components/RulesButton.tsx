@@ -4,9 +4,10 @@ import Drawer from '@mui/material/Drawer';
 import { useState } from 'react';
 import { Rules } from './Rules';
 import Tooltip from '@mui/material/Tooltip';
+import { GameRules } from 'src/types/GameRules';
 
 interface Props {
-    rules: string[];
+    rules: GameRules;
 }
 
 export const RulesButton: React.FC<Props> = (props) => {

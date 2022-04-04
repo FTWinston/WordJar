@@ -8,6 +8,7 @@ import SwitchIcon from '@mui/icons-material/SwapHoriz';
 import StartIcon from '@mui/icons-material/PlayArrow';
 import RuleIcon from '@mui/icons-material/Rule';
 import { Teams } from './Teams';
+import { GameRules } from 'src/types/GameRules';
 
 interface Props {
     code: string;
@@ -15,7 +16,7 @@ interface Props {
     hostPlayer: string;
     team1: string[];
     team2: string[];
-    rules: string[];
+    rules: GameRules;
     onConfigure?: () => void;
     onStart?: () => void;
     onSwitch: () => void;

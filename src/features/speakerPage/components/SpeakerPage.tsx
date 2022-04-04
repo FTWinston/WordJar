@@ -10,12 +10,13 @@ import { RulesButton } from 'src/components/RulesButton';
 import { ProgressTimer } from 'src/components/ProgressTimer';
 import Badge from '@mui/material/Badge';
 import { FoulNotification } from 'src/components/FoulNotification';
+import { GameRules } from 'src/types/GameRules';
 
 
 interface Props {
     word: string;
     numSkips: number;
-    rules: string[];
+    rules: GameRules;
     startTime: number;
     endTime: number;
     calledFoul?: string;

@@ -5,11 +5,12 @@ import { RulesButton } from 'src/components/RulesButton';
 import { ProgressTimer } from 'src/components/ProgressTimer';
 import { GuessNotification } from 'src/components/GuessNotification';
 import { FoulNotification } from 'src/components/FoulNotification';
+import { GameRules } from 'src/types/GameRules';
 
 interface Props {
     speaker: string;
     lastWord?: string;
-    rules: string[];
+    rules: GameRules;
     startTime?: number;
     endTime?: number;
     calledFoul?: string;

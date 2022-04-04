@@ -1,6 +1,7 @@
 import { ListenerPage as ListenerPageComponent } from './ListenerPage';
 import { Story } from '@storybook/react'
 import { ComponentProps, useEffect, useState } from 'react';
+import { defaultGameRules } from 'src/utils/defaultGameRules';
 
 export default {
     title: 'Listener Page',
@@ -40,9 +41,5 @@ ListenerPage.args = {
     speaker: 'Some guy',
     startTime: new Date().getTime(),
     endTime: new Date().getTime() + 30000,
-    rules: [
-        'This is a set of three rules.',
-        'Each of them is equally important.',
-        'But we don\'t want to use up too much space, either.'
-    ]
+    rules: defaultGameRules
 };

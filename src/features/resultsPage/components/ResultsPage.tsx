@@ -8,13 +8,14 @@ import RestartIcon from '@mui/icons-material/RestartAlt';
 import { useMemo } from 'react';
 import { determineTeamScores } from '../utils/determineTeamScores';
 import { Teams } from './Teams';
+import { GameRules } from 'src/types/GameRules';
 
 interface Props {
     localPlayer: string;
     hostPlayer: string;
     team1: string[];
     team2: string[];
-    rules: string[];
+    rules: GameRules;
     playerScores: Record<string, number>;
     playerFouls: Record<string, number>;
     onRestart?: () => void;

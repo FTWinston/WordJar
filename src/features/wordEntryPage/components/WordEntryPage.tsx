@@ -9,13 +9,14 @@ import AddIcon from '@mui/icons-material/Add';
 import { Form } from 'src/components/Form';
 import { Page } from 'src/components/Page';
 import { RulesButton } from 'src/components/RulesButton';
+import { GameRules } from 'src/types/GameRules';
 
 
 interface Props {
     current: number;
     total: number;
     prompt: string;
-    rules: string[];
+    rules: GameRules;
     onEnter: (word: string) => Promise<boolean>;
 }
 

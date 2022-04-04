@@ -2,6 +2,7 @@ import { SpeakerPage as SpeakerPageComponent } from './SpeakerPage';
 import { action } from '@storybook/addon-actions'
 import { Story } from '@storybook/react'
 import { ComponentProps, useState } from 'react';
+import { defaultGameRules } from 'src/utils/defaultGameRules';
 
 export default {
     title: 'Speaker Page',
@@ -39,9 +40,5 @@ SpeakerPage.args = {
     numSkips: 2,
     startTime: new Date().getTime(),
     endTime: new Date().getTime() + 30000,
-    rules: [
-        'This is a set of three rules.',
-        'Each of them is equally important.',
-        'But we don\'t want to use up too much space, either.'
-    ]
+    rules: defaultGameRules
 };

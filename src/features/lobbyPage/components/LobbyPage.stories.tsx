@@ -2,6 +2,7 @@ import { LobbyPage as PageComponent } from './LobbyPage';
 import { action } from '@storybook/addon-actions'
 import { Story } from '@storybook/react'
 import { useState } from 'react';
+import { defaultGameRules } from 'src/utils/defaultGameRules';
 
 export default {
     title: 'Lobby Page',
@@ -38,11 +39,7 @@ const Template: Story<{ localHost: boolean }> = (args) => {
             onSwitch={onSwitch}
             onConfigure={args.localHost ? action('configure') : undefined}
             onStart={args.localHost ? action('start') : undefined}
-            rules={[
-                'This is a set of three rules.',
-                'Each of them is equally important.',
-                'But we don\'t want to use up too much space, either.'
-            ]}
+            rules={defaultGameRules}
         />
     );
 }

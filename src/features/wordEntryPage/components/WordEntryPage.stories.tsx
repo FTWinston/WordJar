@@ -2,6 +2,7 @@ import { WordEntryPage } from './WordEntryPage';
 import { action } from '@storybook/addon-actions'
 import { Story } from '@storybook/react'
 import { ComponentProps, useState } from 'react';
+import { defaultGameRules } from 'src/utils/defaultGameRules';
 
 export default {
     title: 'Word Entry Page',
@@ -37,11 +38,7 @@ First.args = {
     current: 1,
     total: 5,
     prompt: 'Name of a movie',
-    rules: [
-        'This is a set of three rules.',
-        'Each of them is equally important.',
-        'But we don\'t want to use up too much space, either.'
-    ]
+    rules: defaultGameRules
 };
 
 export const Second = Template.bind({});
@@ -49,11 +46,7 @@ Second.args = {
     current: 2,
     total: 5,
     prompt: 'Anything at all',
-    rules: [
-        'This is a set of three rules.',
-        'Each of them is equally important.',
-        'But we don\'t want to use up too much space, either.'
-    ]
+    rules: defaultGameRules
 };
 
 export const Last = Template.bind({});
@@ -61,9 +54,5 @@ Last.args = {
     current: 7,
     total: 7,
     prompt: 'Someone you know',
-    rules: [
-        'This is a set of three rules.',
-        'Each of them is equally important.',
-        'But we don\'t want to use up too much space, either.'
-    ]
+    rules: defaultGameRules
 };
